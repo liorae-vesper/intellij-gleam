@@ -108,6 +108,9 @@
         <liveTemplateContext contextId="GLEAM_FUNCTION" baseContextId="GLEAM"
                              implementation="com.github.themartdev.intellijgleam.ide.editor.templates.FunctionContextType"/>
 
+        <codeInsight.template.postfixTemplateProvider language="Gleam"
+                                                       implementationClass="com.github.themartdev.intellijgleam.ide.editor.templates.GleamPostfixTemplateProvider"/>
+
         <defaultLiveTemplates file="liveTemplates/Gleam.xml"/>
 
         <defaultLiveTemplates file="liveTemplates/Gleam-2.xml"/>

@@ -22,6 +22,29 @@
             <option name="GLEAM_TOP_LEVEL" value="true"/>
         </context>
     </template>
+    <template name="pubfn" value="pub fn $NAME$($PARAMS$) {&#10;  $END$&#10;}" toReformat="true"
+              toShortenFQNames="true" key="live.template.pubfn.description" resource-bundle="messages.GleamBundle">
+        <variable name="NAME" expression="" defaultValue="public_function" alwaysStopAt="true"/>
+        <variable name="PARAMS" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="GLEAM_TOP_LEVEL" value="true"/>
+        </context>
+    </template>
+    <template name="test" value="fn test_$NAME$() {&#10;  $END$&#10;}" toReformat="true"
+              toShortenFQNames="true" key="live.template.test.description" resource-bundle="messages.GleamBundle">
+        <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="GLEAM_TOP_LEVEL" value="true"/>
+        </context>
+    </template>
+    <template name="const" value="const $NAME$ = $EXPR$$END$" toReformat="true"
+              toShortenFQNames="true" key="live.template.const.description" resource-bundle="messages.GleamBundle">
+        <variable name="NAME" expression="" defaultValue="value" alwaysStopAt="true"/>
+        <variable name="EXPR" expression="" defaultValue="todo" alwaysStopAt="true"/>
+        <context>
+            <option name="GLEAM_TOP_LEVEL" value="true"/>
+        </context>
+    </template>
 
     <!-- Expression level -->
     <template name="case" value="case $EXPR$ {&#10;  $END$&#10;}" toReformat="true"
@@ -32,8 +55,36 @@
         <variable name="EXPR" expression="" defaultValue="" alwaysStopAt="true"/>
     </template>
     <template name="use" value="use $IDENTIFIER$ &lt;- $END$" toReformat="false"
-              key="live.template.case.description" resource-bundle="messages.GleamBundle">
+              key="live.template.use.description" resource-bundle="messages.GleamBundle">
         <variable name="IDENTIFIER" alwaysStopAt="true"/>
+        <context>
+            <option name="GLEAM_FUNCTION" value="true"/>
+        </context>
+    </template>
+    <template name="let" value="let $NAME$ = $EXPR$$END$" toReformat="false"
+              key="live.template.let.description" resource-bundle="messages.GleamBundle">
+        <variable name="NAME" expression="" defaultValue="value" alwaysStopAt="true"/>
+        <variable name="EXPR" expression="" defaultValue="todo" alwaysStopAt="true"/>
+        <context>
+            <option name="GLEAM_FUNCTION" value="true"/>
+        </context>
+    </template>
+    <template name="assert" value="assert $EXPR$$END$" toReformat="false"
+              key="live.template.assert.description" resource-bundle="messages.GleamBundle">
+        <variable name="EXPR" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="GLEAM_FUNCTION" value="true"/>
+        </context>
+    </template>
+    <template name="todo" value="todo$END$" toReformat="false"
+              key="live.template.todo.description" resource-bundle="messages.GleamBundle">
+        <context>
+            <option name="GLEAM_FUNCTION" value="true"/>
+        </context>
+    </template>
+    <template name="echo" value="echo $EXPR$$END$" toReformat="false"
+              key="live.template.echo.description" resource-bundle="messages.GleamBundle">
+        <variable name="EXPR" expression="" defaultValue="" alwaysStopAt="true"/>
         <context>
             <option name="GLEAM_FUNCTION" value="true"/>
         </context>
