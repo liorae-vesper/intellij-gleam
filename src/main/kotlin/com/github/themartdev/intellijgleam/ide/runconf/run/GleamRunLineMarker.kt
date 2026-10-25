@@ -15,11 +15,22 @@ class GleamRunLineMarker : RunLineMarkerContributor(), DumbAware {
 
     override fun getInfo(element: PsiElement): Info? {
         if (element.containingFile.fileType !is GleamFileType) return null
-        if (element.containingFile.name.endsWith("_test.gleam")) return null
         if (element.elementType != GleamTypes.IDENTIFIER) return null
-        if (element.text != "main") return null
         if (element.parent !is GleamFunctionNameDefinition) return null
         val declaration = element.parent.parent as? GleamFunctionDeclaration ?: return null
+
+        val virtualFile = declaration.containingFile.virtualFile ?: return null
+        if (GleamTestSupport.selectorFor(declaration) != null &&
+            GleamTestSupport.isUnitestProject(virtualFile) &&
+            declaration.functionNameDefinition?.identifier == element
+        ) {
+            return Info(AllIcons.RunConfigurations.TestState.Run, ExecutorAction.getActions(0)) {
+                "Run ${element.text}"
+            }
+        }
+
+        if (element.containingFile.name.endsWith("_test.gleam")) return null
+        if (element.text != "main") return null
         if (declaration.visibilityModifier?.text != "pub") return null
 
         val actions = ExecutorAction.getActions(0)

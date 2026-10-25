@@ -30,17 +30,18 @@ class GleamTestConfigurationState(
         val options = configuration.getOptions()
         return PtyCommandLine()
             .withExePath(configuration.getActualGleamPath())
-            .withParameters(gleamTestParameters(options.target, options.runtime))
+            .withParameters(gleamTestParameters(options.target, options.runtime, options.testName))
             .withWorkDirectory(GleamProject.rootPath(configuration.project) ?: configuration.project.basePath)
             .withEnvironment(GleamToolchain.environmentForTarget(configuration.project, options.target))
     }
 
     companion object {
         /** Builds the `gleam` arguments for a test run. `--target` and `--runtime` are added only when set. */
-        fun gleamTestParameters(target: String?, runtime: String? = null): List<String> {
+        fun gleamTestParameters(target: String?, runtime: String? = null, testName: String? = null): List<String> {
             val params = mutableListOf("test")
             target?.takeIf { it.isNotBlank() }?.let { params += listOf("--target", it) }
             runtime?.takeIf { it.isNotBlank() }?.let { params += listOf("--runtime", it) }
+            testName?.takeIf { it.isNotBlank() }?.let { params += listOf("--", "--test", it) }
             return params
         }
     }

@@ -76,6 +76,13 @@ class GleamTestConfigurationTest : LightPlatformTestCase() {
         )
     }
 
+    fun `test gleamTestParameters selects a single test when requested`() {
+        assertEquals(
+            listOf("test", "--target", "javascript", "--runtime", "deno", "--", "--test", "my_app_test.add_test"),
+            GleamTestConfigurationState.gleamTestParameters("javascript", "deno", "my_app_test.add_test")
+        )
+    }
+
     fun `test gleamTestParameters omits a blank runtime`() {
         assertEquals(listOf("test"), GleamTestConfigurationState.gleamTestParameters("", ""))
     }

@@ -9,4 +9,6 @@ class GleamTestConfigurationOptions : RunConfigurationOptions() {
     var runtime by string("")
     var useCustomGleam by property(false)
     var customGleamPath by string("")
+    // Empty = run the package's full test suite; set to `module.test_name` for unitest.
+    var testName by string("")
 }

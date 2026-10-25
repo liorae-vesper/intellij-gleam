@@ -124,6 +124,9 @@
         <runConfigurationProducer
                 implementation="com.github.themartdev.intellijgleam.ide.runconf.run.GleamRunConfigurationProducer"/>
 
+        <runConfigurationProducer
+                implementation="com.github.themartdev.intellijgleam.ide.runconf.run.GleamTestRunConfigurationProducer"/>
+
         <postStartupActivity implementation="com.github.themartdev.intellijgleam.ide.lifecycle.GleamStartupActivity"/>
 
         <newProjectWizard.generator
