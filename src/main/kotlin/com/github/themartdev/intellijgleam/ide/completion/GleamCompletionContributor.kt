@@ -4,6 +4,7 @@ import com.intellij.codeInsight.completion.CompletionContributor
 
 class GleamCompletionContributor : CompletionContributor() {
     private val providers = listOf(
+        ClosureArgumentCompletionProvider,
         FileScopeCompletionProvider,
         FunctionScopeCompletionProvider
     )
