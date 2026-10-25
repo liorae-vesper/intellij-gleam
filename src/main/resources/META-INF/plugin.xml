@@ -71,6 +71,8 @@
         <lang.quoteHandler language="Gleam"
                            implementationClass="com.github.themartdev.intellijgleam.ide.editor.GleamQuoteHandler"/>
 
+        <extendWordSelectionHandler implementation="com.github.themartdev.intellijgleam.ide.editor.GleamStructuralSelectionHandler"/>
+
         <lang.foldingBuilder language="Gleam"
                              implementationClass="com.github.themartdev.intellijgleam.ide.editor.GleamFoldingBuilder"/>
 
